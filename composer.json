@@ -1,6 +1,7 @@
 {
     "name": "xidanko/query-filter",
     "description": "Elegant full featured query filter for laravel.",
+    "keywords": ["laravel", "filter", "query", "filter query", "laravel filter query", "laravel filter"],
     "type": "library",
     "license": "MIT",
     "autoload": {
@@ -14,7 +15,6 @@
             "email": "xidanko07@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
         "php": ">=7.4"
     },
