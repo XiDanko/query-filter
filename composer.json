@@ -1,0 +1,28 @@
+{
+    "name": "xidanko/query-filter",
+    "description": "Elegant full featured query filter for laravel.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "XiDanko\\QueryFilter\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jalal Al-Mussawi",
+            "email": "xidanko07@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.4"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "XiDanko\\QueryFilter\\QueryFilterServiceProvider"
+            ]
+        }
+    }
+}
