@@ -7,18 +7,12 @@ use XiDanko\QueryFilter\Filter;
 
 class $className extends Filter
 {
-
-    protected function filters(): array
-    {
-        return ['placeholder'];
-    }
-
-    public function placeholder(Builder $builder, string $value): Builder
+    public function placeholder(Builder $builder, ?string $value): Builder
     {
         return $builder;
     }
 
-    public function orderByPlaceholder(Builder $builder, string $value): Builder
+    public function orderByPlaceholder(Builder $builder, string $direction): Builder
     {
         return $builder;
     }
