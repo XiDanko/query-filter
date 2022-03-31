@@ -7,7 +7,7 @@ use XiDanko\QueryFilter\Filter;
 
 class $className extends Filter
 {
-    public function placeholder(Builder $builder, ?string $value): Builder
+    public function placeholder(Builder $builder, string $value): Builder
     {
         return $builder;
     }

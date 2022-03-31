@@ -34,7 +34,7 @@ abstract class Filter
     private function filter()
     {
         foreach ($this->filterMethods as $method) {
-            if (!$this->request->has($method)) continue;
+            if (!$this->request->filled($method)) continue;
             $this->builder = $this->$method($this->builder, $this->request->$method);
         }
     }
