@@ -26,12 +26,12 @@ abstract class Filter
     public function apply(Builder $builder): Builder
     {
         $this->builder = $builder;
-        $this->filter();
-        $this->sort();
+        $this->filterQuery();
+        $this->sortQuery();
         return $this->builder;
     }
 
-    private function filter()
+    private function filterQuery()
     {
         foreach ($this->filterMethods as $method) {
             if (!$this->request->filled($method)) continue;
@@ -39,7 +39,7 @@ abstract class Filter
         }
     }
 
-    private function sort()
+    private function sortQuery()
     {
         foreach ($this->orderByMethods as $method) {
             $key = Str::of($method)->after('orderBy')->camel()->__toString();
@@ -60,11 +60,9 @@ abstract class Filter
     private function parseOrderByParams()
     {
         if (! $this->request->filled('orderBy')) return;
-        foreach ((array) $this->request->orderBy as $param) {
-            if (str_contains($param, ':')) [$name, $direction] = explode(':', $param);
-            else [$name, $direction] = [$param, 'asc'];
-            $this->orderByParams[$name] = $direction;
-        }
+        if (str_contains($this->request->orderBy, ':')) [$name, $direction] = explode(':', $this->request->orderBy);
+        else [$name, $direction] = [$this->request->orderBy, 'asc'];
+        $this->orderByParams[$name] = $direction;
     }
 
     final function orderBy() {

@@ -13,15 +13,14 @@ class CreateFilterCommand extends Command
     public function __construct()
     {
         parent::__construct();
-
     }
 
     public function handle()
     {
         File::ensureDirectoryExists(app_path('Filters'));
-        $filePath = app_path('Filters\\' . $this->argument('name') . '.php');
+        $filePath = app_path('Filters' . DIRECTORY_SEPARATOR . $this->argument('name') . '.php');
         if (File::exists($filePath)) return $this->error("Filter already exists!");
-        $fileContent = str_replace('$className', $this->argument('name'), file_get_contents(__DIR__ . '\FilterClass.stub'));
+        $fileContent = str_replace('$className', $this->argument('name'), file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'FilterClass.stub'));
         $handler = fopen($filePath, 'w') or die("Unable to open file!");
         fwrite($handler, $fileContent);
         fclose($handler);
